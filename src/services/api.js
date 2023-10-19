@@ -10,7 +10,10 @@ export const postUsuario = async (data, senha)=>{
             'password': senha
         }
     }
-
-    const response = await api.post('/usuarios', data, config)
-    return response.data
+    const valido = await api.post('/usuarios/email', data.email)
+    if(valido.success){
+        const response = await api.post('/usuarios', data, config)
+        return response
+    }
+    return {success:false, message:"Email inválido"}
 }
