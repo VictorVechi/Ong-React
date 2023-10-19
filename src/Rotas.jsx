@@ -7,6 +7,7 @@ const Rotas = () => {
     <BrowserRouter>
         <Routes>
             <Route path='/' element={<LandingPage />}/>
+            <Route path='/cadastro' element={<Cadastro/>} />
         </Routes>
     </BrowserRouter>
   )
