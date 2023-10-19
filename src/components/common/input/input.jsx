@@ -14,5 +14,4 @@ const Input = ({ tipo, valor, placeholder, func, classe }) => {
   );
 };
 
-export default Input
-
+export default Input;
