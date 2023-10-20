@@ -10,6 +10,7 @@ export const postUsuario = async (data, senha)=>{
             'password': senha
         }
     }
+<<<<<<< HEAD
 
     const response = await api.post('/usuarios', data, config)
     return response.data
@@ -39,3 +40,12 @@ export const loginUsuario = async (email, senha) => {
     }
   }
   
+=======
+    const valido = await api.post('/usuarios/email', data.email)
+    if(valido.success){
+        const response = await api.post('/usuarios', data, config)
+        return response
+    }
+    return {success:false, message:"Email inválido"}
+}
+>>>>>>> 6676634a4d909816d387269b6dd56e5eb63886cf

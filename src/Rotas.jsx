@@ -10,7 +10,11 @@ const Rotas = () => {
         <GlobalStyle/>
         <Routes>
             <Route path='/' element={<LandingPage />}/>
+<<<<<<< HEAD
             <Route path="/login" element={<Login />}/>
+=======
+            <Route path='/cadastro' element={<Cadastro/>} />
+>>>>>>> 6676634a4d909816d387269b6dd56e5eb63886cf
         </Routes>
     </BrowserRouter>
   )
