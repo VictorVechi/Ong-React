@@ -1,16 +1,16 @@
 import React from 'react';
+import { StyleInput } from './input.styles';
 
-const Input = ({ tipo, valor, placeholder, func, classe }) => {
+const Input = ({ tipo, valor, placeholder, func, nome}) => {
   return (
-    <>
-      <input
-        className={classe}
-        type={tipo}
-        value={valor}
-        placeholder={placeholder}
-        onChange={func}
-      />
-    </>
+    <StyleInput 
+      type={tipo}
+      name={nome}
+      value={valor}
+      placeholder={placeholder}
+      required
+      onChange={func}>
+    </StyleInput>
   );
 };
 
