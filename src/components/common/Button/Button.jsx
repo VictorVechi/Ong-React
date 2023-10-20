@@ -1,10 +1,9 @@
 import React from 'react'
+import { StyleButton } from './button.styles'
 
-const Button = ({texto, tipo, func, classe}) => {
+const Button = ({texto, tipo, func}) => {
   return (
-    <>
-        <button className={classe} type={tipo} onClick={func}>{texto}</button>
-    </>
+      <StyleButton type={tipo} onClick={func} >{texto}</StyleButton>
   )
 }
 
