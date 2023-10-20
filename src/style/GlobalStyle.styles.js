@@ -38,7 +38,8 @@ input {
   font-family: 'Montserrat', sans-serif;
 }
 
-h2 {
+
+h1, h2{
   font-family: 'Montserrat', sans-serif;
   font-size: 38px;
 }
