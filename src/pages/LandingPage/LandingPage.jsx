@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from '../components/views/LandingPage/Header/Header'
+import Header from '../../components/views/LandingPage/Header/Header'
 
 const LandingPage = () => {
   return (
