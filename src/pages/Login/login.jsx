@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { loginUsuario } from '../../services/api';
+import Input from '../../components/common/input/input';
+import Button from '../../components/common/Button/Button';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -23,8 +25,8 @@ const Login = () => {
         setError(null);
 
       } else {
-        setError(response.message);
-        setSuccessMessage(null);
+        // setError(response.message);
+        // setSuccessMessage(null);
       }
     } catch (error) {
       console.error('Erro de autenticação:', error);
@@ -39,21 +41,23 @@ const Login = () => {
       {successMessage && <div style={{ color: 'green' }}>{successMessage}</div>}
       <form onSubmit={fazerLogin}>
         <label htmlFor="email">Email</label>
-        <input
-          type="text"
-          id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+        <Input 
+            tipo={"email" } 
+            valor={email} 
+            nome={'email'} 
+            placeholder={'igorvechi@gmail.com'} 
+            func={(e)=>setEmail(e.target.value)}
         />
         <label htmlFor="senha">Senha</label>
-        <input
-          type="password"
-          id="senha"
-          value={senha}
-          onChange={(e) => setSenha(e.target.value)}
+        <Input 
+            tipo={"password"} 
+            valor={senha} 
+            nome={'senha' } 
+            placeholder={'●●●●●●●'} 
+            func={(e)=>setSenha(e.target.value)}
         />
         {error && <div style={{ color: 'red' }}>{error}</div>}
-        <button type="submit">Entrar</button>
+        <Button texto={'Cadastrar'} classe='btn-cadastrar' func={(e)=> fazerLogin(e)}/>
       </form>
     </div>
   );
