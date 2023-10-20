@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
-    * {
+  * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -19,14 +19,27 @@ a {
   cursor: pointer;
 }
 
-a, li{
+a, li, p{
   text-decoration: none;
   list-style: none;
   color: inherit;
+  font-family: 'Roboto Slab', serif;
 }
-
+label {
+  font-family: 'Roboto Slab', serif;
+  color: #263238;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+}
 button,
 input {
   outline: none;
+  font-family: 'Montserrat', sans-serif;
+}
+
+h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 38px;
 }
 `
