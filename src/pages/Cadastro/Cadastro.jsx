@@ -6,6 +6,7 @@ import { StyleCadastro } from './Cadastro.styles'
 import cadastroLogo from '/imgCadastro.svg'
 import { Link, useNavigate } from 'react-router-dom'
 import Input from '../../components/common/input/input'
+import { House } from '@phosphor-icons/react/dist/ssr'
 
 const Cadastro = () => {
   const [nome, setNome] = useState('')
@@ -13,11 +14,11 @@ const Cadastro = () => {
   const [senha, setSenha] = useState('')
   const [confirmaSenha, setConfirmaSenha] = useState('')
   const [telefone, setTelefone] = useState('')
-
+  const navigate = useNavigate()
 
   const cadastrar = async (event) => {
       event.preventDefault()
-      const navigate = useNavigate()
+      
       const data = {
         nome: nome,
         email: email,
@@ -36,7 +37,8 @@ const Cadastro = () => {
   return (
     <StyleCadastro>
       <section>
-        <Link to={'/'}><h2>Cão Feliz</h2></Link>
+        <Link to={'/'} className='home' ><House size={80}/></Link>
+        <h2 className='nomeOng'>Ong Cão Feliz</h2>
         <picture>
           <img src={cadastroLogo} alt="aa" className='cadastro-img'/>
         </picture>

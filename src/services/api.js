@@ -49,3 +49,13 @@ export const verificarEmail = async (email) => {
 
     return false;
 };
+
+
+export const getPets = async () => {
+    try {
+        const response = await api.get('/pets')
+        return response.data
+    } catch(error){
+        console.log(error.message);
+    }
+}

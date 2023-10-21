@@ -55,6 +55,14 @@ export const StyleCadastro = styled.div`
         align-items: center;
     }
 
+    .nomeOng {
+        height: 20%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 50px;
+    }
+
     .cadastro-img {
         height: 100%;
         width: 100%;
@@ -66,5 +74,16 @@ export const StyleCadastro = styled.div`
 
     button:hover {
         scale: 1.1;
+    }
+
+    .home {
+        align-self: flex-end;
+        color: ${(props)=>props.theme.darkBlue};
+        padding: 0 20px
+        
+    }
+
+    .home:hover {
+        color: ${(props)=>props.theme.orangeDark};
     }
 `
