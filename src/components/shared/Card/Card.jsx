@@ -8,10 +8,10 @@ const Card = ({nome,raca, idade, peso, func}) => {
     <StyleCard>
         <img src={dogFofo} alt="" />
         <div>
-            <p>Nome:{nome}</p>
-            <p>Raça:{raca}</p>
-            <p>Idade:{idade}</p>
-            <p>Peso:{peso} Kg</p>
+            <p>Nome: {nome}</p>
+            <p>Raça: {raca}</p>
+            <p>Idade: {idade}</p>
+            <p>Peso: {peso} Kg</p>
         </div>
         <Button 
             texto={"Adotar"}
