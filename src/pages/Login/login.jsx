@@ -60,7 +60,7 @@ const Login = () => {
             func={(e)=>setSenha(e.target.value)}
         />
         <p>Ainda não possuí cadastro? <Link className='link-cadastro' to={'/cadastro'}>Cadastre-se já</Link></p>
-        <Button texto={'Cadastrar'} classe='btn-cadastrar' func={(e)=> fazerLogin(e)}/>
+        <Button texto={'Entrar'} classe='btn-cadastrar' func={(e)=> fazerLogin(e)}/>
       </form>
       <section>
         <Link to={'/'} className='home'><House size={80}/></Link>
