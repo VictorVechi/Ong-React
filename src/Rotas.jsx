@@ -6,6 +6,7 @@ import Login from './pages/Login/login'
 import Cadastro from './pages/Cadastro/Cadastro'
 import { ThemeProvider } from 'styled-components'
 import { theme } from './style/theme'
+import Dashboard from './pages/Dashboard/Dashboard'
 
 const Rotas = () => {
   return (
@@ -13,6 +14,7 @@ const Rotas = () => {
       <GlobalStyle />
       <ThemeProvider theme={theme}>
         <Routes>
+        <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/' element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
         <Route path='/cadastro' element={<Cadastro />} /> 
