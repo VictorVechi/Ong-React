@@ -4,7 +4,7 @@ export const StyleCadastro = styled.div`
     display: flex;
     align-items: center;
     height: 100vh;
-    background-color: ${(props)=>props.theme.blue};
+   
 
     form {
         display: flex;
@@ -37,7 +37,7 @@ export const StyleCadastro = styled.div`
     }
 
     section{
-        
+        background-color: ${(props)=>props.theme.blue};
         width: 60%;
         height: 100%;
         display: flex;
