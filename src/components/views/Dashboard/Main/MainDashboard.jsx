@@ -4,6 +4,7 @@ import adote from '/adote.svg'
 import { getPets } from "../../../../services/api";
 import { useState } from "react";
 import { useEffect } from "react";
+import CardDashboard from "../Card/CardDashboard";
 
 
 const MainDashboard = () => {
@@ -43,11 +44,7 @@ const MainDashboard = () => {
   return (
     <StylesMainDash>
       <section>
-        {/* <img
-          src={adote}
-          alt="Vetor de um cachorro e um gato com a palavra adopt"
-          className="img-adote"
-        /> */}
+        <CardDashboard desc='minha descrição' nome={listaPets[numero]?.nome}/>
       </section>
       <section>
         <div>
