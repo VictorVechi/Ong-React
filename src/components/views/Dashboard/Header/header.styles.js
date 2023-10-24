@@ -1,13 +1,15 @@
 import styled from "styled-components";
 
-export const StyleHeader = styled.header`
 
-    width: 100%;
+export const StyleHeaderDash = styled.header`
+
+width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: ${(props)=>props.theme.blue};
     height: 12%;
+    border: 2px solid black;
 
     .logo {
         padding: 10px;
