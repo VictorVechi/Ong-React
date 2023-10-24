@@ -19,11 +19,11 @@ export const loginUsuario = async (email, senha) => {
     try {
         const config = {
             headers: {
-                'X-password': senha,
+                'password': senha,
             },
         };
 
-        const resposta = await api.post('/usuarios/login', { email }, config);
+        const resposta = await api.post('/usuarios/login', {email}, config);
 
         return resposta.data;
     } catch (error) {
