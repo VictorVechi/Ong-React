@@ -17,24 +17,15 @@ const Main = () => {
     setListaPets([])
     setErroConexao(true)
   } else {
-    const respostaFiltro = filtro(resposta)
+    const respostaFiltro = []
+    resposta.reverse()
+    for(let i = 0; i < 5; i++){
+        respostaFiltro.push(resposta[i])
+    }
     setListaPets(respostaFiltro)
   }
+  }
   
-  }
-
-  function filtro(lista){
-    const array = []
-    try{
-      for(let i = 5; i > 0; i--){
-        array.push(lista[i])
-      }
-      return array
-    } catch(error){
-      console.log(error.message);
-    }
-  }
-
   const navegarLogin = ()=> {
     navigate('/login')
   }
