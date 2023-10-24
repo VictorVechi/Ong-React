@@ -5,8 +5,7 @@ export const StyleHeader = styled.header`
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 25px;
-    align-items: baseline;
+    align-items: center;
     background-color: ${(props)=>props.theme.blue};
     height: 12%;
 

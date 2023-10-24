@@ -38,7 +38,7 @@ const Cadastro = () => {
     <StyleCadastro>
       <section>
         <Link to={'/'} className='home' ><House size={80}/></Link>
-        <h2 className='nomeOng'>Ong Cão Feliz</h2>
+        <h2 className='nomeOng'>ONG Cão Feliz</h2>
         <picture>
           <img src={cadastroLogo} alt="aa" className='cadastro-img'/>
         </picture>

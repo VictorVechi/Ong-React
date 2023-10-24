@@ -1,10 +1,9 @@
 import styled from "styled-components";
 
-export const StyleCadastro = styled.div`
+export const StyleLogin = styled.div`
     display: flex;
-    align-items: center;
     height: 100vh;
-   
+    width: 100%;
 
     form {
         display: flex;
@@ -19,24 +18,11 @@ export const StyleCadastro = styled.div`
         gap: 10px;
     }
 
-    form > div {
-        gap: 10px;
-        display: flex;
-        flex-direction:column;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-    }
-
-    label {
-        font-size: 24px;
-    }
-
     h2 {
         color: ${(props)=>props.theme.darkBlue};
     }
-
-    section{
+    
+    section {
         background-color: ${(props)=>props.theme.blue};
         width: 60%;
         height: 100%;
@@ -44,7 +30,6 @@ export const StyleCadastro = styled.div`
         flex-direction: column;
         justify-content: center;
         align-items: center;
-    
     }
 
     picture {
@@ -63,7 +48,7 @@ export const StyleCadastro = styled.div`
         font-size: 50px;
     }
 
-    .cadastro-img {
+    .login-img {
         height: 100%;
         width: 100%;
     }
@@ -77,7 +62,7 @@ export const StyleCadastro = styled.div`
     }
 
     .home {
-        align-self: flex-end;
+        align-self: flex-start;
         color: ${(props)=>props.theme.darkBlue};
         padding: 0 20px
         
@@ -85,5 +70,9 @@ export const StyleCadastro = styled.div`
 
     .home:hover {
         color: ${(props)=>props.theme.orangeDark};
+    }
+
+    .link-cadastro {
+        font-weight: bold;
     }
 `

@@ -8,5 +8,6 @@ export const theme = {
     darkBlue: "#0B90FF",
     orangeDark: "#FA9B27",
     black: "#000000",
-    bege:"#FAEBD0"
+    bege:"#FAEBD0",
+    creme: "#FFF6DC"
 }

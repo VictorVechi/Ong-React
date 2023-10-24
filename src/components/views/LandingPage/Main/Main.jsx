@@ -8,13 +8,19 @@ import adote from '/adote.svg'
 
 const Main = () => {
   const [listaPets, setListaPets] = useState([])
-
+  const [erroConexao, setErroConexao] = useState(false)
   const navigate = useNavigate()
 
   const handleBuscarPets = async () => {
   const resposta = await getPets();
-  const respostaFiltro = filtro(resposta)
-  setListaPets(respostaFiltro)
+  if(resposta == null){
+    setListaPets([])
+    setErroConexao(true)
+  } else {
+    const respostaFiltro = filtro(resposta)
+    setListaPets(respostaFiltro)
+  }
+  
   }
 
   function filtro(lista){
@@ -46,6 +52,11 @@ useEffect(()=>{
             {listaPets.map((pet)=>{
               return <Card key={pet._id}  nome={pet.nome} idade={pet.idade} peso={pet.peso} raca={pet.raca} func={navegarLogin}/>
             })}
+            {erroConexao && <Card func={navegarLogin}/>}
+            {erroConexao && <Card func={navegarLogin}/>}
+            {erroConexao && <Card func={navegarLogin}/>}
+            {erroConexao && <Card func={navegarLogin}/>}
+            {erroConexao && <Card func={navegarLogin}/>}
         </section>
     </StyleMain>
   )
