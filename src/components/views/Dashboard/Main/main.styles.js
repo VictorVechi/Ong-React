@@ -7,23 +7,21 @@ export const StylesMainDash = styled.main`
     align-items: center;
     height: 88%;
     background-color: #FF960B8F;
-
+    padding: 1%;
     section {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 50%;
+        width: 70%;
         height: 100%;
     }  
-
-    .img-adote {
-        width: 80%;
-        height: 80%;
-    }
 
     section:last-child{
         flex-direction: row;
         flex-wrap: wrap;
         gap: 10px;
+        width: 30%;
     }
+
+
 `
