@@ -14,13 +14,20 @@ const Header = () => {
     navigate('/login')
   }
 
+  const navigateToQuemSomos = () => {
+    navigate('/QuemSomos')
+  }
+
   return (
     <StyleHeader>
       <Link to={'/'}><h1 className='logo'>ONG Cão Feliz</h1></Link>
       <nav>
         <ul className='lista-Nav'>
-          <li className='item-lista'>Home</li>
-          <li className='item-lista'>Quem somos</li>
+          <li className='item-lista'>
+            <Link to={'/'}>Home</Link> 
+          </li>
+          <li className='item-lista'>
+            <Link to={'/QuemSomos'}>Quem somos</Link></li>
           <li className='item-lista'>
             <Link to={'/login'}>Login</Link>
           </li>
