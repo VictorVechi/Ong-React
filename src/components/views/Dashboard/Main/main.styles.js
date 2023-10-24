@@ -17,7 +17,8 @@ export const StylesMainDash = styled.main`
     }  
 
     section:last-child{
-        flex-direction: row;
+        display: flex;
+        flex-direction: column;
         flex-wrap: wrap;
         gap: 10px;
         width: 30%;
