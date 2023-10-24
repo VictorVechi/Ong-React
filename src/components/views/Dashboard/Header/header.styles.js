@@ -11,6 +11,10 @@ width: 100%;
     height: 12%;
     border: 2px solid black;
 
+    .logo {
+        padding: 10px;
+    }
+
     .lista-Nav {
         width: fit-content;
         display: flex;

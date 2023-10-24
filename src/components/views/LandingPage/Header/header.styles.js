@@ -9,6 +9,10 @@ export const StyleHeader = styled.header`
     background-color: ${(props)=>props.theme.blue};
     height: 12%;
 
+    .logo {
+        padding: 10px;
+    }
+
     .lista-Nav {
         width: fit-content;
         display: flex;
