@@ -5,6 +5,8 @@ import { getPets } from "../../../../services/api";
 import { useState } from "react";
 import { useEffect } from "react";
 import CardDashboard from "../Card/CardDashboard";
+import BtnChangeCard from "../BtnChangeCard/BtnChangeCard";
+import BtnMeAdote from "../BtnMeAdote/BtnMeAdote";
 
 
 const MainDashboard = () => {
@@ -44,17 +46,27 @@ const MainDashboard = () => {
   return (
     <StylesMainDash>
       <section>
-        <CardDashboard desc='minha descrição' nome={listaPets[numero]?.nome}/>
+        <CardDashboard 
+        desc={listaPets[numero]?.descricao}
+        nome={listaPets[numero]?.nome}
+        raca={listaPets[numero]?.raca}
+        idade={listaPets[numero]?.idade}
+        peso={listaPets[numero]?.peso}
+
+        />
+        
       </section>
       <section>
         <div>
-          <button onClick={prevCard}>anterior</button>
-          <button onClick={nextCard}>proximo</button>
-          <p>{listaPets[numero]?.nome}</p>
-          <p>{listaPets[numero]?.idade}</p>
-          <p>{listaPets[numero]?.peso}</p>
-          <p>{listaPets[numero]?.raca}</p>
+          <BtnChangeCard 
+          func={prevCard} texto="Anterior" />
+
+          <BtnChangeCard 
+          func={nextCard} texto="Próximo" />
+          
         </div>
+        <BtnMeAdote
+          texto="Me adote" />
       </section>
     </StylesMainDash>
   );
