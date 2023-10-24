@@ -16,7 +16,7 @@ const Header = () => {
 
   return (
     <StyleHeader>
-      <Link to={'/'}><h1 className='logo'>Ong Cão Feliz</h1></Link>
+      <Link to={'/'}><h1 className='logo'>ONG Cão Feliz</h1></Link>
       <nav>
         <ul className='lista-Nav'>
           <li className='item-lista'>Home</li>
