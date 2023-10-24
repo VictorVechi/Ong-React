@@ -20,12 +20,12 @@ const Login = () => {
       }
       const response = await loginUsuario(email, senha);
 
-      // console.log(response.data._id)
       if (response.success) {
           localStorage.setItem('id', response.data._id)
           localStorage.setItem('nome', response.data.nome)
           localStorage.setItem('email', response.data.email)
-          // navigate('dashboard')
+          localStorage.setItem('admin', response.data.admin)
+          navigate('/dashboard')
       } else {
           document.getElementsByName('senha').style.border = '2px outset red'
           document.getElementsByName('email').style.border = '2px outset red'
