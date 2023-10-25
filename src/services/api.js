@@ -113,13 +113,16 @@ export const loginUsuario = async (email, senha) => {
 };
 
 export const verificarEmail = async (email) => {
-    const response = await api.post('/usuarios/email', { email });
-
-    if (response.data.success) {
-        return true;
+    try {
+        const data = {
+            email:email
+        }
+        const response = await api.post('/usuarios/email', data );
+        return response.data
+        
+    } catch(error) {
+        console.log(error.message)
     }
-
-    return false;
 };
 
 
