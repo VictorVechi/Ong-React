@@ -18,6 +18,33 @@ export const postUsuario = async (data, senha) => {
     }
 };
 
+export const getUsuarioPorId = async (id) =>{
+    try {
+        const response = await api.get(`/usuarios/${id}`)
+        return response.data
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const getEnderecoUsuarioPorId = async (id) => {
+    try {
+        const response = await api.get(`/enderecoUsuario/${id}`)
+        return response.data
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const atualizarEnderecoUsuario = async (id, data) => {
+    try {
+        const response = await api.put(`/enderecoUsuario/${id}`, data)
+        return response
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export const postEnderecoUsuario = async() => {
     try {
         const endereco = {
