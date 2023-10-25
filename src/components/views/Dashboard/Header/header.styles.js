@@ -42,6 +42,7 @@ width: 100%;
     .item-lista:nth-child(3):hover{
         border-color: ${(props)=>props.theme.black};
         color: ${(props)=>props.theme.darkBlue};
+        cursor: pointer;
     }
 
     button {
