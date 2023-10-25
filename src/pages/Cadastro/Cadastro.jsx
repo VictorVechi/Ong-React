@@ -38,6 +38,7 @@ const Cadastro = () => {
           localStorage.setItem('nome', responseLogin.data.nome)
           localStorage.setItem('email', responseLogin.data.email)
           localStorage.setItem('admin', responseLogin.data.admin)
+          localStorage.setItem('idEndereco', response.data.Idendereco)  
           navigate('/dashboard')
         }
         
