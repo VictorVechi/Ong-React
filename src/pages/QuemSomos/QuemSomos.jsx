@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleQuemSomos, CardContainer, CardImage } from './QuemSomos.styles';
+import { StyleQuemSomos, CardContainerRow, CardContainer, CardImage } from './QuemSomos.styles';
 import Header from '../../components/views/LandingPage/Header/Header';
 
 function QuemSomos() {
@@ -12,19 +12,20 @@ function QuemSomos() {
                 <p>Resgatamos, reabilitamos e encontramos lares responsáveis para animais em necessidade, além de educar a comunidade sobre o cuidado responsável e defender os direitos dos animais. Junte-se a nós para criar um mundo onde todos os animais sejam amados e protegidos.</p>
             </div>
 
-            <CardContainer>
-                <CardImage src="/img/imagem1.jpg" alt="Card 1" />
-            </CardContainer>
-            <CardContainer>
-                <CardImage src="/img/imagem2.jpg" alt="Card 2" />
-            </CardContainer>
-            <CardContainer>
-                <CardImage src="/img/imagem3.jpg" alt="Card 3" />
-            </CardContainer>
-            <CardContainer>
-                <CardImage src="/img/imagem4.jpg" alt="Card 4" />
-            </CardContainer>
-
+            <CardContainerRow>
+                <CardContainer>
+                    <CardImage src="/public/adote.svg" alt="Card 1" />
+                </CardContainer>
+                <CardContainer>
+                    <CardImage src="/public/adote.svg" alt="Card 2" />
+                </CardContainer>
+                <CardContainer>
+                    <CardImage src="/public/adote.svg" alt="Card 3" />
+                </CardContainer>
+                <CardContainer>
+                    <CardImage src="/public/adote.svg" alt="Card 4" />
+                </CardContainer>
+            </CardContainerRow>
 
         </StyleQuemSomos>
     )
