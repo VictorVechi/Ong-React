@@ -17,6 +17,7 @@ export const StylesModal = styled.div`
 export const StylesContentModal = styled.div`
   display: flex;
   width: 500px;
+  height: 75%;
   padding: 10px;
   flex-direction: column;
   justify-content: center;
@@ -39,10 +40,6 @@ export const StylesContentModal = styled.div`
     button {
         background-color: ${(props)=>props.theme.orangeDark};
     }
-
-    button:hover {
-        scale: 1.1;
-    }
   
     .header {
     width: 100%;
@@ -56,12 +53,14 @@ export const StylesContentModal = styled.div`
     background: #FFFFFF;
     box-shadow: 5px 6px 4px 0px rgba(0, 0, 0, 0.25);
     width: 90%;
-    padding: 12px;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+    padding: 8px;
+    font-size: 20px;
     border: 2px solid transparent;
     color: ${(props)=>props.theme.grey};
+  }
+
+  input {
+    font-size: 20px;
+    padding: 8px;
   }
 `;
