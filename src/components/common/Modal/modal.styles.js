@@ -34,6 +34,7 @@ export const StylesContentModal = styled.div`
     
     label {
         color: white;
+        width: 90%;
 
     }
 
@@ -53,14 +54,13 @@ export const StylesContentModal = styled.div`
     background: #FFFFFF;
     box-shadow: 5px 6px 4px 0px rgba(0, 0, 0, 0.25);
     width: 90%;
-    padding: 8px;
-    font-size: 20px;
+    font-size: 15px;
     border: 2px solid transparent;
     color: ${(props)=>props.theme.grey};
   }
 
   input {
-    font-size: 20px;
+    font-size: 15px;
     padding: 8px;
   }
 `;
