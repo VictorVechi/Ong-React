@@ -83,8 +83,7 @@ const MainDashboard = () => {
           func={nextCard} texto="Próximo" />
           
         </div>
-        <BtnMeAdote
-          texto="Me adote" />
+       {!admin &&  <BtnMeAdote texto="Me adote" />}
         {admin && <Button texto={'Cadastrar'} func={()=>setModalAberto(true)}/>}
       </section>
       </StylesMainDash>
