@@ -5,15 +5,87 @@ const api = axios.create({
 });
 
 export const postUsuario = async (data, senha) => {
-    const config = {
-        headers: {
-            'password': senha
-        }
-    };
-
-    const response = await api.post('/usuarios', data, config);
-    return response.data;
+    try {
+        const config = {
+            headers: {
+                'password': senha
+            }
+        }; 
+        const response = await api.post('/usuarios', data, config);
+        return response.data;
+    } catch (error) {
+        console.log(error.message);
+    }
 };
+
+export const getUsuarioPorId = async (id) =>{
+    try {
+        const response = await api.get(`/usuarios/${id}`)
+        return response.data
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const getEnderecoUsuarioPorId = async (id) => {
+    try {
+        const response = await api.get(`/enderecoUsuario/${id}`)
+        return response.data
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const atualizarEnderecoUsuario = async (id, data) => {
+    try {
+        const response = await api.put(`/enderecoUsuario/${id}`, data)
+        return response
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const postEnderecoUsuario = async() => {
+    try {
+        const endereco = {
+            cep: " ",
+            rua: " ",
+            numero: " ",
+            complemento: " "
+        }
+    
+        const responseEndereco = api.post('/enderecoUsuario', endereco)
+        return responseEndereco
+    
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const postEnderecoUnidade = async() => {
+    try {
+        const endereco = {
+            cep: " ",
+            rua: " ",
+            numero: " ",
+        }
+    
+        const responseEndereco = api.post('/enderecoUnidade', endereco)
+        return responseEndereco
+    
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const postUnidade = async (data) => {
+    try {
+        const response = await api.post('/unidades', data)
+        return response.data
+    } catch (error) {
+        console.log(error.message);
+    }
+}
 
 export const loginUsuario = async (email, senha) => {
     try {
@@ -57,5 +129,23 @@ export const getPets = async () => {
         return response.data
     } catch(error){
         console.log(error.message);
+    }
+}
+
+export const postPets = async (data) => {
+    try {
+        const response = await api.post('/pets', data)
+        return response
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+export const getUnidades = async () => {
+    try {
+        const response = await api.get('/unidades')
+        return response.data
+    } catch(error) {
+        console.log(error.message)
     }
 }

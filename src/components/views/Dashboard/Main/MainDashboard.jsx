@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import { StylesMainDash } from "./main.styles";
-import { getPets } from "../../../../services/api";
+import { getPets, getUnidades, getUsuarioPorId, postPets } from "../../../../services/api";
 import CardDashboard from "../Card/CardDashboard";
 import BtnChangeCard from "../BtnChangeCard/BtnChangeCard";
 import BtnMeAdote from "../BtnMeAdote/BtnMeAdote";
@@ -18,6 +18,9 @@ const MainDashboard = () => {
   const [descPet, setDescPet] = useState('')
   const [numero, setNumero] = useState(0);
   const [modalAberto, setModalAberto] = useState(false)
+  const [unidadeSelecionada, setUnidadeSelecionada] = useState('')
+  const [unidades, setUnidades] = useState([])
+
   let admin = localStorage.getItem('admin')
   if(admin == 'true'){
      admin = true
@@ -26,7 +29,25 @@ const MainDashboard = () => {
   }
 
   const cadastrar = async () => {
-    
+    const admin = await verificarAdmin()
+    // console.log(admin.admin)
+    if(admin.admin){
+      const data = {
+        nome: nomePet,
+        raca: racaPet,
+        peso: pesoPet,
+        idade: idadePet,
+        id_unidade: unidadeSelecionada,
+        descricao: descPet,
+      }
+      const response = await postPets(data)
+      setNomePet('')
+      setDescPet('')
+      setRacaPet('')
+      setPesoPet('')
+      setIdadePet('')
+      setModalAberto(false)
+    }
   }
 
   const handleBuscarPets = async () => {
@@ -35,9 +56,24 @@ const MainDashboard = () => {
     setListaPets(resposta);
   };
 
+  const verificarAdmin = async () => {
+      const id = localStorage.getItem("id")
+      const response = getUsuarioPorId(id)
+      return response
+  }
+
+  const handleUnidades = async () =>{
+    const response = await getUnidades()
+    setUnidades(response)
+  }
+
   useEffect(() => {
     handleBuscarPets();
   }, []);
+
+  useEffect(()=>{
+    handleUnidades()
+  }, [modalAberto])
 
   function prevCard() {
     if (numero <= 0) {
@@ -83,8 +119,7 @@ const MainDashboard = () => {
           func={nextCard} texto="Próximo" />
           
         </div>
-        <BtnMeAdote
-          texto="Me adote" />
+       {!admin &&  <BtnMeAdote texto="Me adote" />}
         {admin && <Button texto={'Cadastrar'} func={()=>setModalAberto(true)}/>}
       </section>
       </StylesMainDash>
@@ -92,15 +127,22 @@ const MainDashboard = () => {
         <h2>Cadastre um pet</h2>
         <label htmlFor="nome">Nome:</label>
         <Input valor={nomePet} placeholder={'Nome do pet'} nome={'nome'} tipo={'text'}  func={(e)=>setNomePet(e.target.value)}/>
-        <label htmlFor="raca">Raça:</label>
-        <Input valor={racaPet} placeholder={'Raça ou especíe'} nome={'raca'} tipo={'text'}  func={(e)=>setRacaPet(e.target.value)}/>
+        <label htmlFor="raca">Tipo:</label>
+        <Input valor={racaPet} placeholder={'Tipo do animal:'} nome={'raca'} tipo={'text'}  func={(e)=>setRacaPet(e.target.value)}/>
         <label htmlFor="idade">Idade:</label>
         <Input valor={idadePet} placeholder={'Idade do pet'} nome={'idade'} tipo={'text'}  func={(e)=>setIdadePet(e.target.value)}/>
         <label htmlFor="peso">Peso:</label>
         <Input valor={pesoPet} placeholder={'Peso do pet'} nome={'peso'} tipo={'text'}  func={(e)=>setPesoPet(e.target.value)}/>
         <label htmlFor="descricao">Descricao:</label>
         <textarea value={descPet} name="descricao" placeholder="Descrição" onChange={(e)=>setDescPet(e.target.value)}></textarea>
-        <Button texto={'Cadastrar'} func={()=>cadastrar} />
+        <select value={unidadeSelecionada} onChange={(evento) => setUnidadeSelecionada(evento.target.value)}>
+          {unidades.map((unidade) => {
+            return (
+              <option key={unidade._id} value={unidade._id}>{unidade.nome}</option>
+            )
+          })}
+        </select>
+        <Button texto={'Cadastrar'} func={(e)=> cadastrar(e)} />
       </Modal>
     </>
   );

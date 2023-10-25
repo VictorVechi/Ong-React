@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleQuemSomos, CardContainer, CardImage } from './QuemSomos.styles';
+import { StyleQuemSomos, CardContainerRow, CardContainer, CardImage } from './QuemSomos.styles';
 import Header from '../../components/views/LandingPage/Header/Header';
 
 function QuemSomos() {
@@ -12,20 +12,42 @@ function QuemSomos() {
                 <p>Resgatamos, reabilitamos e encontramos lares responsáveis para animais em necessidade, além de educar a comunidade sobre o cuidado responsável e defender os direitos dos animais. Junte-se a nós para criar um mundo onde todos os animais sejam amados e protegidos.</p>
             </div>
 
-            <CardContainer>
-                <CardImage src="/img/imagem1.jpg" alt="Card 1" />
-            </CardContainer>
-            <CardContainer>
-                <CardImage src="/img/imagem2.jpg" alt="Card 2" />
-            </CardContainer>
-            <CardContainer>
-                <CardImage src="/img/imagem3.jpg" alt="Card 3" />
-            </CardContainer>
-            <CardContainer>
-                <CardImage src="/img/imagem4.jpg" alt="Card 4" />
-            </CardContainer>
-
-
+            <CardContainerRow>
+                <CardContainer>
+                    <CardImage src="/public/victor.JPG" alt="Card 1" />
+                </CardContainer>
+                <CardContainer>
+                    <CardImage src="/public/rafael.JPG" alt="Card 2" />
+                </CardContainer>
+                <CardContainer>
+                    <CardImage src="/public/jose.JPG" alt="Card 3" />
+                </CardContainer>
+                <CardContainer>
+                    <CardImage src="/public/francheska.JPG" alt="Card 4" />
+                </CardContainer>
+            </CardContainerRow>
+            <div className='fileira'>
+                <div>
+                    <p>Victor Henrique V. da Silva</p>
+                    <a href="https://www.linkedin.com/in/victorhvechi/" target="_blank"><img src="/public/linkedin_logo.svg" alt="icone linkedin"></img></a>
+                    <a href='https://github.com/VictorVechi' target="_blank"><img src="/public/github_logo.svg" alt="icone github"></img></a>
+                </div>
+                <div>
+                    <p>Rafael Fantin Camargo</p>
+                    <a href="https://www.linkedin.com/in/rafaelfantincamargo/" target="_blank"><img src="/public/linkedin_logo.svg" alt="icone linkedin"></img></a>
+                    <a href='https://github.com/rffantin' target="_blank"><img src="/public/github_logo.svg" alt="icone github"></img></a>
+                </div>
+                <div>
+                    <p>José Felipe de Proença</p>
+                    <a href="https://www.linkedin.com/in/jos%C3%A9-felipe-de-proen%C3%A7a-5895a6238/" target="_blank"><img src="/public/linkedin_logo.svg" alt="icone linkedin"></img></a>
+                    <a href='https://github.com/JojoPrc' target="_blank"><img src="/public/github_logo.svg" alt="icone github"></img></a>
+                </div>
+                <div>    
+                    <p>Francheska Oliveira Pereira</p>
+                    <a href="https://www.linkedin.com/in/francheska-oliveira-783b40134/" target="_blank"><img src="/public/linkedin_logo.svg" alt="icone linkedin"></img></a>
+                    <a href='https://github.com/FrancheskaOliveira' target="_blank"><img src="/public/github_logo.svg" alt="icone github"></img></a>
+                </div>
+            </div>
         </StyleQuemSomos>
     )
 }

@@ -10,7 +10,7 @@ export const StyleCardDash = styled.div`
     justify-content: space-around;
     align-items: center;
     box-shadow: 5px 6px 4px 0px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
+    border-radius: 40px;
     background-color: ${(props)=>props.theme.blue};
     .img-card {
         width: 40%;
