@@ -104,3 +104,21 @@ export const getPets = async () => {
         console.log(error.message);
     }
 }
+
+export const postPets = async (data) => {
+    try {
+        const response = await api.post('/pets', data)
+        return response
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+export const getUnidades = async () => {
+    try {
+        const response = await api.get('/unidades')
+        return response.data
+    } catch(error) {
+        console.log(error.message)
+    }
+}
