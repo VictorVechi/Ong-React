@@ -49,7 +49,7 @@ const HeaderDash = () => {
         <nav>
             <ul className='lista-Nav'>
             <li className='item-lista'><Link to={'/dashboard'}>Dashboard</Link></li>
-            <li className='item-lista'>Unidades</li>
+            <li className='item-lista'><Link to={'/unidades'}>Unidades</Link></li>
             <li className='item-lista'>Doações</li>
             <li className='item-lista' onClick={(e)=>handleEndereco(e)}>Olá, {nome} <User size={20}/></li>
             <li className='item-lista'>
