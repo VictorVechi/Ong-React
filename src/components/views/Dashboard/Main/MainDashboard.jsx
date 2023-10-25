@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import { StylesMainDash } from "./main.styles";
-import { getPets, getUnidades, postPets } from "../../../../services/api";
+import { getPets, getUnidades, getUsuarioPorId, postPets } from "../../../../services/api";
 import CardDashboard from "../Card/CardDashboard";
 import BtnChangeCard from "../BtnChangeCard/BtnChangeCard";
 import BtnMeAdote from "../BtnMeAdote/BtnMeAdote";
@@ -29,21 +29,25 @@ const MainDashboard = () => {
   }
 
   const cadastrar = async () => {
-    const data = {
-      nome: nomePet,
-      raca: racaPet,
-		  peso: pesoPet,
-		  idade: idadePet,
-		  id_unidade: unidadeSelecionada,
-      descricao: descPet,
+    const admin = await verificarAdmin()
+    // console.log(admin.admin)
+    if(admin.admin){
+      const data = {
+        nome: nomePet,
+        raca: racaPet,
+        peso: pesoPet,
+        idade: idadePet,
+        id_unidade: unidadeSelecionada,
+        descricao: descPet,
+      }
+      const response = await postPets(data)
+      setNomePet('')
+      setDescPet('')
+      setRacaPet('')
+      setPesoPet('')
+      setIdadePet('')
+      setModalAberto(false)
     }
-    const response = await postPets(data)
-    setNomePet('')
-    setDescPet('')
-    setRacaPet('')
-    setPesoPet('')
-    setIdadePet('')
-    setModalAberto(false)
   }
 
   const handleBuscarPets = async () => {
@@ -51,6 +55,12 @@ const MainDashboard = () => {
     console.log(resposta);
     setListaPets(resposta);
   };
+
+  const verificarAdmin = async () => {
+      const id = localStorage.getItem("id")
+      const response = getUsuarioPorId(id)
+      return response
+  }
 
   const handleUnidades = async () =>{
     const response = await getUnidades()
