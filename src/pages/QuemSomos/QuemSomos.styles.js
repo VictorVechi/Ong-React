@@ -1,12 +1,12 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyleQuemSomos = styled.div`
-    background-color: #FF960B8F;
+    background-color: ${(props)=>props.theme.orange};
 
     h2 {
         padding-top: 4vw;
         text-align: center;
-        color: #0B90FF;
+        color: ${(props)=>props.theme.darkBlue};
     }
 
     .paragrafo {
@@ -16,8 +16,15 @@ export const StyleQuemSomos = styled.div`
         padding-left: 10vw;
         padding-right: 10vw;
     }
+`;
 
-`
+export const CardContainerRow = styled.div`
+    display: flex; 
+    justify-content: space-between;
+    padding-left: 10vw;
+    padding-right: 10vw;
+`;
+
 export const CardContainer = styled.div`
     border-radius: 50%;
     width: 200px;
