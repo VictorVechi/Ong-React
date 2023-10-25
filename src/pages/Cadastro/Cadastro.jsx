@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Button from '../../components/common/Button/Button'
-import { postUsuario } from '../../services/api'
+import { loginUsuario, postEnderecoUsuario, postUsuario } from '../../services/api'
 import { StyleCadastro } from './Cadastro.styles'
 
 import cadastroLogo from '/imgCadastro.svg'
@@ -18,16 +18,29 @@ const Cadastro = () => {
 
   const cadastrar = async (event) => {
       event.preventDefault()
-      
-      const data = {
-        nome: nome,
-        email: email,
-        telefone: telefone,
-      }
 
       if(senha === confirmaSenha){
+  
+        const responseEndereco = await postEnderecoUsuario()
+        
+        console.log(responseEndereco.data.id)
+        const data = {
+          nome: nome,
+          email: email,
+          telefone: telefone,
+          Idendereco: responseEndereco.data.id,
+        }
+
         const response = await postUsuario(data, senha)
-        navigate('/login')
+        const responseLogin = await loginUsuario(email, senha);
+        if(responseLogin.success){
+          localStorage.setItem('id', responseLogin.data._id)
+          localStorage.setItem('nome', responseLogin.data.nome)
+          localStorage.setItem('email', responseLogin.data.email)
+          localStorage.setItem('admin', responseLogin.data.admin)
+          navigate('/dashboard')
+        }
+        
       } else {
           document.getElementsByName('senha')[0].style.border = '2px outset red'
           document.getElementsByName('confirmaSenha')[0].style.border = '2px outset red'
