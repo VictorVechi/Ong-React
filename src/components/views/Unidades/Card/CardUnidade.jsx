@@ -1,6 +1,5 @@
 import React from 'react'
 import { StyleCardUnidade } from './card.styles'
-import feast from '/Feast.jpg'
 import { Buildings } from '@phosphor-icons/react'
 import Button from '../../../common/Button/Button'
 
