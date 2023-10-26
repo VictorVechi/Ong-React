@@ -95,7 +95,11 @@ export const loginUsuario = async (email, senha) => {
             },
         };
 
-        const resposta = await api.post('/usuarios/login', {email}, config);
+        const data = {
+            email:email
+        }
+
+        const resposta = await api.post('/usuarios/login', data, config);
 
         return resposta.data;
     } catch (error) {
