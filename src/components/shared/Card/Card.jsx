@@ -9,7 +9,7 @@ const Card = ({nome,raca, idade, peso, func}) => {
         <img src={dogFofo} alt="" />
         <div>
             <p>Nome: {nome}</p>
-            <p>Raça: {raca}</p>
+            <p>Tipo: {raca}</p>
             <p>Idade: {idade}</p>
             <p>Peso: {peso} Kg</p>
         </div>
