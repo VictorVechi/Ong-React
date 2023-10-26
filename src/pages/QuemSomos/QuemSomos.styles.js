@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const StyleQuemSomos = styled.div`
     background-color: ${(props)=>props.theme.orange};
-
+    height: 100vh;
     h2 {
         padding-top: 4vw;
         text-align: center;
