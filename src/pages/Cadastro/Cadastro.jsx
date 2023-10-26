@@ -26,7 +26,7 @@ const Cadastro = () => {
         return
       }
 
-      if(senha === confirmaSenha){
+      if(senha === confirmaSenha && senha.length > 7){
   
         const responseEndereco = await postEnderecoUsuario()
         

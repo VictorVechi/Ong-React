@@ -34,8 +34,6 @@ const Login = () => {
       }
     } catch (error) {
       console.error('Erro de autenticação:', error);
-      setError('Erro de autenticação, por favor, tente novamente mais tarde.');
-      setSuccessMessage(null);
     }
   };
 

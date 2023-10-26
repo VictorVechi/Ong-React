@@ -95,7 +95,11 @@ export const loginUsuario = async (email, senha) => {
             },
         };
 
-        const resposta = await api.post('/usuarios/login', {email}, config);
+        const data = {
+            email:email
+        }
+
+        const resposta = await api.post('/usuarios/login', data, config);
 
         return resposta.data;
     } catch (error) {
@@ -133,7 +137,17 @@ export const getPets = async () => {
     } catch(error){
         console.log(error.message);
     }
+} 
+
+export const getPetPorId = async (id) => {
+    try {
+        const response = await api.get(`/pets/${id}`)
+        return response.data
+    } catch (error) {
+        console.log(error.message);
+    }
 }
+
 
 export const postPets = async (data) => {
     try {
@@ -151,4 +165,15 @@ export const getUnidades = async () => {
     } catch(error) {
         console.log(error.message)
     }
+}
+
+
+export const adocao = async (id, data) => {
+    try {
+        const response = await api.put(`/pets/${id}`, data)
+        return response
+    } catch(error){
+        console.log(error.message)
+    }
+
 }
