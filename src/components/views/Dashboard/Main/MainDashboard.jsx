@@ -22,6 +22,19 @@ const MainDashboard = () => {
   const [unidades, setUnidades] = useState([])
 
   let admin = localStorage.getItem('admin')
+  let userId = localStorage.getItem('id')
+  let listaAdotados = JSON.parse(localStorage.getItem(userId))
+  
+
+  function handleAdoteBtn(){
+       
+    console.log(userId)
+    listaAdotados.push(listaPets[numero]?._id)
+    localStorage.setItem(userId, JSON.stringify(listaAdotados))
+    console.log(listaAdotados)
+  }
+
+  
   if(admin == 'true'){
      admin = true
   } else {
@@ -119,7 +132,7 @@ const MainDashboard = () => {
           func={nextCard} texto="Próximo" />
           
         </div>
-       {!admin &&  <BtnMeAdote texto="Me adote" />}
+       {!admin && !listaAdotados.includes(listaPets[numero]?._id) && <BtnMeAdote texto="Me adote" func={()=>handleAdoteBtn()}/>}
         {admin && <Button texto={'Cadastrar'} func={()=>setModalAberto(true)}/>}
       </section>
       </StylesMainDash>
