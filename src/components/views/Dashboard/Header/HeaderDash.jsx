@@ -39,7 +39,7 @@ const HeaderDash = () => {
     const nome = localStorage.getItem('nome') || 'admin'
     const navigate = useNavigate()
     const logout = ()=> {
-        localStorage.clear()
+    localStorage.clear()
         navigate('/')
     }
   return (
