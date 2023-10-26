@@ -29,8 +29,8 @@ const Login = () => {
           localStorage.setItem(response.data._id, JSON.stringify([]))
           navigate('/dashboard')
       } else {
-          document.getElementsByName('senha').style.border = '2px outset red'
-          document.getElementsByName('email').style.border = '2px outset red'
+          document.getElementsByName('senha')[0].style.border = '2px outset red'
+          document.getElementsByName('email')[0].style.border = '2px outset red'
       }
     } catch (error) {
       console.error('Erro de autenticação:', error);
