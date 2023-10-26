@@ -32,7 +32,7 @@ export const StyleHeader = styled.header`
         opacity: 0.7;
     }
 
-    .item-lista:nth-child(3){
+    .item-lista:nth-child(4){
         border: 2px solid ${(props)=>props.theme.orangeDark} ;
         border-radius: 5px;
     }

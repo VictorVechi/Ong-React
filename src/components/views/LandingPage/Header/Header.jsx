@@ -27,7 +27,9 @@ const Header = () => {
             <Link to={'/'}>Home</Link> 
           </li>
           <li className='item-lista'>
-            <Link to={'/QuemSomos'}>Quem somos</Link></li>
+            <Link to={'/QuemSomos'}>Quem somos</Link>
+          </li>
+          <li className='item-lista'>Doações</li>
           <li className='item-lista'>
             <Link to={'/login'}>Login</Link>
           </li>
