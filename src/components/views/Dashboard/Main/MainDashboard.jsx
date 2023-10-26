@@ -36,7 +36,6 @@ const MainDashboard = () => {
       const response = await adocao(idPet, data)
       console.log(response);
 
-      // console.log(listaAdotados)
     } 
     await desabilitar()
   }
@@ -99,12 +98,10 @@ const MainDashboard = () => {
 
   function prevCard() {
     if (numero <= 0) {
-      console.log("ultimo index do array", listaPets.length - 1);
       return setNumero(() => listaPets.length - 1);
     }
 
     return setNumero((prevState) => {
-      console.log(prevState);
       return prevState - 1;
     });
   }
