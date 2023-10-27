@@ -166,8 +166,6 @@ export const getUnidades = async () => {
         console.log(error.message)
     }
 }
-
-<<<<<<< HEAD
 export const postDoacao = async (data) => {
     try {
         const response = await api.post('/doacoes', data);
@@ -176,7 +174,7 @@ export const postDoacao = async (data) => {
         console.log(error.message);
     }
 };
-=======
+
 
 export const adocao = async (id, data) => {
     try {
@@ -187,4 +185,3 @@ export const adocao = async (id, data) => {
     }
 
 }
->>>>>>> 72e015a2fbf26fcc5927316ceba92c4e3f5b37f9
