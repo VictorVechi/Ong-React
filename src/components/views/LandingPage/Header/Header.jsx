@@ -10,14 +10,6 @@ const Header = () => {
     navigate('/cadastro')
   }
 
-  const navigateToLogin = () => {
-    navigate('/login')
-  }
-
-  const navigateToQuemSomos = () => {
-    navigate('/QuemSomos')
-  }
-
   return (
     <StyleHeader>
       <Link to={'/'}><h1 className='logo'>ONG Cão Feliz</h1></Link>
@@ -29,7 +21,13 @@ const Header = () => {
           <li className='item-lista'>
             <Link to={'/QuemSomos'}>Quem somos</Link>
           </li>
+<<<<<<< HEAD
+          <li className='item-lista'>
+            <Link to={'/Doacoes'}>Doações</Link>
+          </li>
+=======
           <li className='item-lista'>Doações</li>
+>>>>>>> 72e015a2fbf26fcc5927316ceba92c4e3f5b37f9
           <li className='item-lista'>
             <Link to={'/login'}>Login</Link>
           </li>

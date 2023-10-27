@@ -167,6 +167,16 @@ export const getUnidades = async () => {
     }
 }
 
+<<<<<<< HEAD
+export const postDoacao = async (data) => {
+    try {
+        const response = await api.post('/doacoes', data);
+        return response.data;
+    } catch (error) {
+        console.log(error.message);
+    }
+};
+=======
 
 export const adocao = async (id, data) => {
     try {
@@ -177,3 +187,4 @@ export const adocao = async (id, data) => {
     }
 
 }
+>>>>>>> 72e015a2fbf26fcc5927316ceba92c4e3f5b37f9
