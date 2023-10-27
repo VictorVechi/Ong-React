@@ -149,3 +149,12 @@ export const getUnidades = async () => {
         console.log(error.message)
     }
 }
+
+export const postDoacao = async (data) => {
+    try {
+        const response = await api.post('/doacoes', data);
+        return response.data;
+    } catch (error) {
+        console.log(error.message);
+    }
+};
