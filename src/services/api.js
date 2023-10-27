@@ -95,7 +95,11 @@ export const loginUsuario = async (email, senha) => {
             },
         };
 
-        const resposta = await api.post('/usuarios/login', {email}, config);
+        const data = {
+            email:email
+        }
+
+        const resposta = await api.post('/usuarios/login', data, config);
 
         return resposta.data;
     } catch (error) {
@@ -113,13 +117,16 @@ export const loginUsuario = async (email, senha) => {
 };
 
 export const verificarEmail = async (email) => {
-    const response = await api.post('/usuarios/email', { email });
-
-    if (response.data.success) {
-        return true;
+    try {
+        const data = {
+            email:email
+        }
+        const response = await api.post('/usuarios/email', data );
+        return response.data
+        
+    } catch(error) {
+        console.log(error.message)
     }
-
-    return false;
 };
 
 
@@ -130,7 +137,17 @@ export const getPets = async () => {
     } catch(error){
         console.log(error.message);
     }
+} 
+
+export const getPetPorId = async (id) => {
+    try {
+        const response = await api.get(`/pets/${id}`)
+        return response.data
+    } catch (error) {
+        console.log(error.message);
+    }
 }
+
 
 export const postPets = async (data) => {
     try {
@@ -150,6 +167,7 @@ export const getUnidades = async () => {
     }
 }
 
+<<<<<<< HEAD
 export const postDoacao = async (data) => {
     try {
         const response = await api.post('/doacoes', data);
@@ -158,3 +176,15 @@ export const postDoacao = async (data) => {
         console.log(error.message);
     }
 };
+=======
+
+export const adocao = async (id, data) => {
+    try {
+        const response = await api.put(`/pets/${id}`, data)
+        return response
+    } catch(error){
+        console.log(error.message)
+    }
+
+}
+>>>>>>> 72e015a2fbf26fcc5927316ceba92c4e3f5b37f9

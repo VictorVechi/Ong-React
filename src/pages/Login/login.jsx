@@ -25,16 +25,15 @@ const Login = () => {
           localStorage.setItem('nome', response.data.nome)
           localStorage.setItem('email', response.data.email)
           localStorage.setItem('admin', response.data.admin)
-          localStorage.setItem('idEndereco', response.data.Idendereco)          
+          localStorage.setItem('idEndereco', response.data.Idendereco)      
+          localStorage.setItem(response.data._id, JSON.stringify([]))
           navigate('/dashboard')
       } else {
-          document.getElementsByName('senha').style.border = '2px outset red'
-          document.getElementsByName('email').style.border = '2px outset red'
+          document.getElementsByName('senha')[0].style.border = '2px outset red'
+          document.getElementsByName('email')[0].style.border = '2px outset red'
       }
     } catch (error) {
       console.error('Erro de autenticação:', error);
-      setError('Erro de autenticação, por favor, tente novamente mais tarde.');
-      setSuccessMessage(null);
     }
   };
 

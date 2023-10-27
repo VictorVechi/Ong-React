@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import { StylesMainDash } from "./main.styles";
-import { getPets, getUnidades, getUsuarioPorId, postPets } from "../../../../services/api";
+import { adocao, getPetPorId, getPets, getUnidades, getUsuarioPorId, postPets } from "../../../../services/api";
 import CardDashboard from "../Card/CardDashboard";
 import BtnChangeCard from "../BtnChangeCard/BtnChangeCard";
 import BtnMeAdote from "../BtnMeAdote/BtnMeAdote";
@@ -22,6 +22,36 @@ const MainDashboard = () => {
   const [unidades, setUnidades] = useState([])
 
   let admin = localStorage.getItem('admin')
+  async function handleAdoteBtn(){
+    const idPet = listaPets[numero]?._id
+    const pet = await getPetPorId(idPet)
+    const idUsuario = localStorage.getItem('id')
+    console.log(pet)
+    if(pet.usuarios.indexOf(idUsuario) == -1){
+      console.log(pet);
+      
+      const data = pet
+      data.usuarios.push(idUsuario)
+
+      const response = await adocao(idPet, data)
+      console.log(response);
+
+    } 
+    await desabilitar()
+  }
+
+  async function desabilitar(){
+      const idPet = listaPets[numero]?._id
+      const pet = await getPetPorId(idPet)
+      const idUsuario = localStorage.getItem('id')
+      if(pet.usuarios.indexOf(idUsuario) == -1){
+        document.getElementById('botaoAdotar').style.backgroundColor = '#ff5faf'
+      } else {
+        document.getElementById('botaoAdotar').style.backgroundColor = 'gray'
+      }
+      
+  }
+  
   if(admin == 'true'){
      admin = true
   } else {
@@ -30,7 +60,6 @@ const MainDashboard = () => {
 
   const cadastrar = async () => {
     const admin = await verificarAdmin()
-    // console.log(admin.admin)
     if(admin.admin){
       const data = {
         nome: nomePet,
@@ -50,9 +79,9 @@ const MainDashboard = () => {
     }
   }
 
+
   const handleBuscarPets = async () => {
     const resposta = await getPets();
-    console.log(resposta);
     setListaPets(resposta);
   };
 
@@ -67,22 +96,12 @@ const MainDashboard = () => {
     setUnidades(response)
   }
 
-  useEffect(() => {
-    handleBuscarPets();
-  }, []);
-
-  useEffect(()=>{
-    handleUnidades()
-  }, [modalAberto])
-
   function prevCard() {
     if (numero <= 0) {
-      console.log("ultimo index do array", listaPets.length - 1);
       return setNumero(() => listaPets.length - 1);
     }
 
     return setNumero((prevState) => {
-      console.log(prevState);
       return prevState - 1;
     });
   }
@@ -95,6 +114,19 @@ const MainDashboard = () => {
       return prevState + 1;
     });
   }
+
+  useEffect(() => {
+    handleBuscarPets();
+  }, []);
+
+  useEffect(()=>{
+    handleUnidades()
+  }, [modalAberto])
+
+  useEffect(()=>{
+    desabilitar()
+  }, [numero])
+
 
   return (
     <>
@@ -119,7 +151,7 @@ const MainDashboard = () => {
           func={nextCard} texto="Próximo" />
           
         </div>
-       {!admin &&  <BtnMeAdote texto="Me adote" />}
+       {!admin && <BtnMeAdote id={'botaoAdotar'} texto="Me adote" func={()=>handleAdoteBtn()}/>}
         {admin && <Button texto={'Cadastrar'} func={()=>setModalAberto(true)}/>}
       </section>
       </StylesMainDash>
