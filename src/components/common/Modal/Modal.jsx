@@ -12,7 +12,7 @@ const Modal = ({ open, title, fechaModal, children }) => {
             <StylesContentModal>
               <section className="header">
                 <h2>{title}</h2>
-                <X color={'black'} onClick={fechaModal} cursor="pointer" size={32}/>
+                <X color={'white'} onClick={fechaModal} cursor="pointer" size={32}/>
               </section>
               {children}
             </StylesContentModal>
