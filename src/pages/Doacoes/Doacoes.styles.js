@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const StyleDoacao = styled.div`
-  height: 120vh;
+  height: 100vh;
   background: #FF960B8F;
   border-radius: 2%;
   box-shadow: -4px -4px 8px 0px rgba(0, 0, 0, 0.25), 4px 4px 8px 0px rgba(0, 0, 0, 0.25);
@@ -11,6 +11,8 @@ export const StyleDoacao = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    height: 88%;
   }
 
   .texto {
