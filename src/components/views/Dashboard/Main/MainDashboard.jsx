@@ -20,7 +20,7 @@ const MainDashboard = () => {
   const [modalAberto, setModalAberto] = useState(false)
   const [unidadeSelecionada, setUnidadeSelecionada] = useState('')
   const [unidades, setUnidades] = useState([])
-  const [modalAdocao, setModalAdocao] = useState(true)
+  const [modalAdocao, setModalAdocao] = useState(false)
 
   let admin = localStorage.getItem('admin')
   
