@@ -32,7 +32,7 @@ export const StylesContentModal = styled.div`
         color: ${(p) => p.theme.white};
         }
     
-    label {
+    label, p {
         color: white;
         width: 90%;
 
