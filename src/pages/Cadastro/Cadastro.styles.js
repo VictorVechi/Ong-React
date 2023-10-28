@@ -36,6 +36,10 @@ export const StyleCadastro = styled.div`
         color: ${(props)=>props.theme.darkBlue};
     }
 
+    form > h2 {
+        color: ${(props)=>props.theme.black};
+    }
+
     section{
         background-color: ${(props)=>props.theme.blue};
         width: 60%;

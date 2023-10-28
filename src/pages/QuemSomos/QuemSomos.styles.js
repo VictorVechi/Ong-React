@@ -6,9 +6,9 @@ export const StyleQuemSomos = styled.div`
     h2 {
         padding-top: 4vw;
         text-align: center;
-        color: ${(props)=>props.theme.darkBlue};
+        color: ${(props)=>props.theme.black};
     }
-
+    
     .paragrafo {
         font-size: 20px;
         text-align: center;
