@@ -4,10 +4,19 @@ import Button from '../../components/common/Button/Button';
 import { postDoacao } from '../../services/api';
 import { StyleDoacao } from './Doacoes.styles';
 import Header from '../../components/views/LandingPage/Header/Header';
+import HeaderDash from '../../components/views/Dashboard/Header/HeaderDash'
 
 const Doacao = () => {
   const [cnpjCpf, setCnpjCpf] = useState('');
   const [valorDoacao, setValorDoacao] = useState('');
+
+  const id = localStorage.getItem('id')
+  let logado
+  if(!id){
+    logado = false
+  } else {
+    logado = true
+  }
 
   const handleDoacaoSubmit = async (event) => {
     event.preventDefault();
@@ -31,7 +40,8 @@ const Doacao = () => {
 
   return (
     <StyleDoacao>
-      <Header />
+      {logado && <HeaderDash/>}
+      {!logado && <Header/>}
       <div className='center'>
         <div className="container"> 
           <form onSubmit={handleDoacaoSubmit}>
