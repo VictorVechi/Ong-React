@@ -76,6 +76,7 @@ const MainDashboard = () => {
       setPesoPet('')
       setIdadePet('')
       setModalAberto(false)
+      await handleBuscarPets()
     }
   }
 

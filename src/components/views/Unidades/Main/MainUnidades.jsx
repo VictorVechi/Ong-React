@@ -37,6 +37,7 @@ const MainUnidades = () => {
         setEmail('')
         setTelefone('')
         setModalAberto(false)
+        await handleBuscaUnidades()
       }
     }
 
