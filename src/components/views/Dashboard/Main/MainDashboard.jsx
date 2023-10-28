@@ -20,8 +20,10 @@ const MainDashboard = () => {
   const [modalAberto, setModalAberto] = useState(false)
   const [unidadeSelecionada, setUnidadeSelecionada] = useState('')
   const [unidades, setUnidades] = useState([])
+  const [modalAdocao, setModalAdocao] = useState(true)
 
   let admin = localStorage.getItem('admin')
+  
   async function handleAdoteBtn(){
     const idPet = listaPets[numero]?._id
     const pet = await getPetPorId(idPet)
@@ -38,16 +40,23 @@ const MainDashboard = () => {
 
     } 
     await desabilitar()
+    setModalAdocao(true)
+    setTimeout(()=>{
+      setModalAdocao(false)
+    }, 3500)
+   
   }
 
   async function desabilitar(){
-      const idPet = listaPets[numero]?._id
-      const pet = await getPetPorId(idPet)
-      const idUsuario = localStorage.getItem('id')
-      if(pet.usuarios.indexOf(idUsuario) == -1){
-        document.getElementById('botaoAdotar').style.backgroundColor = '#ff5faf'
-      } else {
-        document.getElementById('botaoAdotar').style.backgroundColor = 'gray'
+      const idPet = listaPets && listaPets[numero] && listaPets[numero]._id;
+      if (idPet) {
+        const pet = await getPetPorId(idPet);
+        const idUsuario = localStorage.getItem('id')
+        if(pet.usuarios.indexOf(idUsuario) == -1){
+          document.getElementById('botaoAdotar').style.backgroundColor = '#ff5faf'
+        } else {
+          document.getElementById('botaoAdotar').style.backgroundColor = 'gray'
+        }
       }
       
   }
@@ -176,6 +185,11 @@ const MainDashboard = () => {
           })}
         </select>
         <Button texto={'Cadastrar'} func={(e)=> cadastrar(e)} />
+      </Modal>
+
+      <Modal open={modalAdocao} fechaModal={(e)=>setModalAdocao(false)}>
+          <h2>Olá, {localStorage.getItem('nome')}</h2>
+          <p className="modal">Você agora está na lista de adoção do pet, em breve um funcionário entrará em contato para agendarmos uma visita!</p>
       </Modal>
     </>
   );
