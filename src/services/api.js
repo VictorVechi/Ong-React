@@ -185,3 +185,12 @@ export const adocao = async (id, data) => {
     }
 
 }
+export const getPetsPorUnidade = async (unidadeId) => {
+    try {
+        const response = await api.get(`/pets/unidade/${unidadeId}`);
+        return response.data;
+    } catch (error) {
+        console.log(error.message);
+    }
+};
+

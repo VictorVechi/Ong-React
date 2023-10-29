@@ -1,106 +1,135 @@
-import React, { useEffect, useState } from 'react'
-import { StyleMainUnidade } from './main.styles'
-import CardUnidade from '../Card/CardUnidade'
-import Button from '../../../common/Button/Button'
-import { getUnidades, getUsuarioPorId, postEnderecoUnidade, postUnidade } from '../../../../services/api'
-import Modal from '../../../common/Modal/Modal'
-import Input from '../../../common/input/input'
+import React, { useEffect, useState } from 'react';
+import { StyleMainUnidade } from './main.styles';
+import CardUnidade from '../Card/CardUnidade';
+import Button from '../../../common/Button/Button';
+import { getUnidades, getUsuarioPorId, getPetsPorUnidade, postEnderecoUnidade, postUnidade } from '../../../../services/api';
+import Modal from '../../../common/Modal/Modal';
+import Input from '../../../common/input/input';
 
 const MainUnidades = () => {
-    const [listaUnidades, setListaUnidades] = useState([])
-    const [numero, setNumero] = useState(0)
-    const [modalAberto, setModalAberto] = useState(false)
+  const [listaUnidades, setListaUnidades] = useState([]);
+  const [numero, setNumero] = useState(0);
+  const [showPetsModal, setShowPetsModal] = useState(false);
+  const [selectedUnidade, setSelectedUnidade] = useState(null);
+  const [unidadePets, setUnidadePets] = useState([]);
 
-    const [nome, setNome] = useState('')
-    const [email, setEmail] = useState('')
-    const [telefone, setTelefone] = useState('')
+  const [nome, setNome] = useState('');
+  const [email, setEmail] = useState('');
+  const [telefone, setTelefone] = useState('');
+  const [modalAberto, setModalAberto] = useState(false);
 
-    let admin = localStorage.getItem('admin')
-    if(admin == 'true'){
-       admin = true
+  let admin = localStorage.getItem('admin');
+  if (admin === 'true') {
+    admin = true;
+  } else {
+    admin = false;
+  }
+
+  const verificarAdmin = async () => {
+    const id = localStorage.getItem('id');
+    const response = getUsuarioPorId(id);
+    return response;
+  };
+
+  const handleBuscaUnidades = async () => {
+    try {
+      const response = await getUnidades();
+      setListaUnidades(response);
+    } catch (error) {
+      console.error('Erro ao buscar unidades:', error);
+    }
+  };
+  const getPetsPorUnidadeLocal = async (unidadeId) => {
+    try {
+      const petsResponse = await getPetsPorUnidade(unidadeId);
+      return petsResponse;
+    } catch (error) {
+      console.error('Erro ao buscar os pets da unidade:', error);
+    }
+  };
+  const handleVerPets = async (unidade) => {
+    setSelectedUnidade(unidade);
+    // Chame a função getPetsPorUnidadeLocal aqui
+    setUnidadePets(await getPetsPorUnidadeLocal(unidade.id));
+    setShowPetsModal(true);
+  };
+
+  const cadastrar = async () => {
+    const adminInfo = await verificarAdmin();
+    if (adminInfo.admin) {
+      const responseEndereco = await postEnderecoUnidade();
+      const data = {
+        nome: nome,
+        email: email,
+        telefone: telefone,
+        id_endereco_unidade: responseEndereco.data.id,
+      };
+      const response = await postUnidade(data);
+      setNome('');
+      setEmail('');
+      setTelefone('');
+      setModalAberto(false);
+      await handleBuscaUnidades();
+    }
+  };
+
+  useEffect(() => {
+    handleBuscaUnidades();
+  }, []);
+
+  function prevCard() {
+    if (numero <= 0) {
+      setNumero(listaUnidades.length - 1);
     } else {
-      admin = false
+      setNumero((prevState) => prevState - 1);
     }
-  
-    const cadastrar = async () => {
-      const admin = await verificarAdmin()
-      if(admin.admin){
-        const responseEndereco = await postEnderecoUnidade()
-        const data = {
-          nome: nome,
-          email: email,
-          telefone: telefone,
-          id_endereco_unidade: responseEndereco.data.id,
-        }
-        const response = await postUnidade(data)
-        setNome('')
-        setEmail('')
-        setTelefone('')
-        setModalAberto(false)
-        await handleBuscaUnidades()
-      }
+  }
+
+  function nextCard() {
+    if (numero === listaUnidades.length - 1) {
+      setNumero(0);
+    } else {
+      setNumero((prevState) => prevState + 1);
     }
+  }
 
-    const verificarAdmin = async () => {
-        const id = localStorage.getItem("id")
-        const response = getUsuarioPorId(id)
-        return response
-    }
+  return (
+    <>
+      <StyleMainUnidade>
+        <div className='carrossel'>
+          <Button texto={'Anterior'} func={prevCard} />
+          <CardUnidade
+            nome={listaUnidades[numero]?.nome}
+            telefone={listaUnidades[numero]?.telefone}
+            email={listaUnidades[numero]?.email}
+            handleVerPets={() => handleVerPets(listaUnidades[numero])}
+          />
+          <Button texto={'Próximo'} func={nextCard} />
+        </div>
+        {admin && <Button texto={'Cadastrar'} func={() => setModalAberto(true)} />}
+      </StyleMainUnidade>
 
-    const handleBuscaUnidades = async () => {
-        const response = await getUnidades()
-        setListaUnidades(response)
-    }
-
-    useEffect(()=>{
-        handleBuscaUnidades()
-    }, [])
-
-    function prevCard() {
-        if (numero <= 0) {
-          return setNumero(() => listaUnidades.length - 1);
-        }
-    
-        return setNumero((prevState) => {
-          console.log(prevState);
-          return prevState - 1;
-        });
-      }
-    
-      function nextCard() {
-        if (numero === listaUnidades.length - 1) {
-          return setNumero(0);
-        }
-        return setNumero((prevState) => {
-          return prevState + 1;
-        });
-      }
-
-
-    return (
-        <>
-            <StyleMainUnidade>
-            <div className='carrossel'>
-                <Button texto={'Anterior'} func={(e)=>prevCard()}/>
-                <CardUnidade nome={listaUnidades[numero]?.nome} telefone={listaUnidades[numero]?.telefone} email={listaUnidades[numero]?.email}/>
-                <Button texto={'Próximo'} func={(e)=>nextCard()}/>
-            </div>
-            {admin && <Button texto={'Cadastrar'} func={(e)=>setModalAberto(true)}/>}
-            </StyleMainUnidade>
-
-
-        <Modal open={modalAberto} fechaModal={() => setModalAberto(false)}>
-        <h2>Cadastre uma Unidade</h2>
-        <label htmlFor="nome">Nome:</label>
-        <Input valor={nome} placeholder={'Nome da unidade'} nome={'nome'} tipo={'text'}  func={(e)=>setNome(e.target.value)}/>
-        <label htmlFor="email">Email:</label>
-        <Input valor={email} placeholder={'Email da unidade:'} nome={'email'} tipo={'text'}  func={(e)=>setEmail(e.target.value)}/>
-        <label htmlFor="telefone">Telefone:</label>
-        <Input valor={telefone} placeholder={'Telefone da unidade'} nome={'telefone'} tipo={'text'}  func={(e)=>setTelefone(e.target.value)}/>
-        <Button texto={'Cadastrar'} func={(e)=> cadastrar(e)} />
+      <Modal open={showPetsModal} fechaModal={() => setShowPetsModal(false)}>
+        <h2>Pets da Unidade: {selectedUnidade?.nome}</h2>
+        {unidadePets.map((pet) => 
+        (<div key={pet.id}>
+          <p>Nome do Pet: {pet.nome}</p>
+          <p>Espécie: {pet.especie}</p>
+          </div>
+          ))}
       </Modal>
-        </>
-    )
-}
+      <Modal open={modalAberto} fechaModal={() => setModalAberto(false)}>
+        <h2>Cadastre uma Unidade</h2>
+        <label htmlFor='nome'>Nome:</label>
+        <Input valor={nome} placeholder={'Nome da unidade'} nome={'nome'} tipo={'text'} func={(e) => setNome(e.target.value)} />
+        <label htmlFor='email'>Email:</label>
+        <Input valor={email} placeholder={'Email da unidade:'} nome={'email'} tipo={'text'} func={(e) => setEmail(e.target.value)} />
+        <label htmlFor='telefone'>Telefone:</label>
+        <Input valor={telefone} placeholder={'Telefone da unidade'} nome={'telefone'} tipo={'text'} func={(e) => setTelefone(e.target.value)} />
+        <Button texto={'Cadastrar'} func={cadastrar} />
+      </Modal>
+    </>
+  );
+};
 
-export default MainUnidades
+export default MainUnidades;
