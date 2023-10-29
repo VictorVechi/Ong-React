@@ -25,5 +25,7 @@ export const StyleMainUnidade = styled.main`
         scale: 1.1;
     }
 
-  
+    .admin {
+        display: flex;
+    }
 `
