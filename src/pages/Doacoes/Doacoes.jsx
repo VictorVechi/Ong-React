@@ -22,11 +22,11 @@ const Doacao = () => {
     event.preventDefault();
   
     const dadosDoacao = {
-      cnpjCpf,
-      valorDoacao
+      valor:valorDoacao,
+      cpf_cnpj:cnpjCpf
+     
     };
     try {
-      console.log("teste", dadosDoacao )
       const resposta = await postDoacao(dadosDoacao);
       console.log('Doação realizada com sucesso:', resposta);
 
@@ -49,10 +49,11 @@ const Doacao = () => {
             <div className="input-container">
               <label htmlFor="cnpjCpf">CNPJ/CPF:</label>
               <Input
-                type="text"
+                tipo="text"
+                nome="cnpjCpf"
                 id="cnpjCpf"
-                value={cnpjCpf}
-                onChange={(e) => setCnpjCpf(e.target.value)}
+                valor={cnpjCpf}
+                func = {(e) => setCnpjCpf(e.target.value)}
                 placeholder="Digite seu CNPJ ou CPF"
                 required
               />
@@ -60,15 +61,15 @@ const Doacao = () => {
             <div className="input-container">
               <label htmlFor="valorDoacao">Valor da Doação:</label>
               <Input
-                type="text"
-                id="valorDoacao"
-                value={valorDoacao}
-                onChange={(e) => setValorDoacao(e.target.value)}
+                tipo="text"
+                nome="valorDoacao"
+                valor={valorDoacao}
+                func={(e) => setValorDoacao(e.target.value)}
                 placeholder="Valor da doação"
                 required
               />
             </div>
-            <Button texto="Doar" classe="btn-doar" func={(e) => fazerDoacao(e)} />
+            <Button texto="Doar" classe="btn-doar" onclick={fazerDoacao}func={(e) => fazerDoacao(e)} />
             <div className='texto'>
               <p>Cuidar dos animais é uma responsabilidade que todos nós compartilhamos. 
                 Quando contribuímos para o bem-estar dos animais, estamos construindo um mundo mais compassivo e solidário. 
