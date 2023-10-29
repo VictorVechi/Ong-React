@@ -41,13 +41,13 @@ useEffect(()=>{
         </section>
         <section>
             {listaPets.map((pet)=>{
-              return <Card key={pet._id}  nome={pet.nome} idade={pet.idade} peso={pet.peso} raca={pet.raca} func={navegarLogin}/>
+              return <Card key={pet._id}  nome={pet.nome} idade={pet.idade} peso={pet.peso} raca={pet.raca} botao={true} func={navegarLogin}/>
             })}
-            {erroConexao && <Card func={navegarLogin}/>}
-            {erroConexao && <Card func={navegarLogin}/>}
-            {erroConexao && <Card func={navegarLogin}/>}
-            {erroConexao && <Card func={navegarLogin}/>}
-            {erroConexao && <Card func={navegarLogin}/>}
+            {erroConexao && <Card botao={true} func={navegarLogin}/>}
+            {erroConexao && <Card botao={true} func={navegarLogin}/>}
+            {erroConexao && <Card botao={true} func={navegarLogin}/>}
+            {erroConexao && <Card botao={true} func={navegarLogin}/>}
+            {erroConexao && <Card botao={true} func={navegarLogin}/>}
         </section>
     </StyleMain>
   )
