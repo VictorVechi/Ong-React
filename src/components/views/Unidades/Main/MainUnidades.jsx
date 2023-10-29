@@ -9,9 +9,7 @@ import Input from '../../../common/input/input';
 const MainUnidades = () => {
   const [listaUnidades, setListaUnidades] = useState([]);
   const [numero, setNumero] = useState(0);
-  const [showPetsModal, setShowPetsModal] = useState(false);
-  const [selectedUnidade, setSelectedUnidade] = useState(null);
-  const [unidadePets, setUnidadePets] = useState([]);
+ 
 
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
@@ -39,20 +37,7 @@ const MainUnidades = () => {
       console.error('Erro ao buscar unidades:', error);
     }
   };
-  const getPetsPorUnidadeLocal = async (unidadeId) => {
-    try {
-      const petsResponse = await getPetsPorUnidade(unidadeId);
-      return petsResponse;
-    } catch (error) {
-      console.error('Erro ao buscar os pets da unidade:', error);
-    }
-  };
-  const handleVerPets = async (unidade) => {
-    setSelectedUnidade(unidade);
-    // Chame a função getPetsPorUnidadeLocal aqui
-    setUnidadePets(await getPetsPorUnidadeLocal(unidade.id));
-    setShowPetsModal(true);
-  };
+
 
   const cadastrar = async () => {
     const adminInfo = await verificarAdmin();
@@ -102,22 +87,12 @@ const MainUnidades = () => {
             nome={listaUnidades[numero]?.nome}
             telefone={listaUnidades[numero]?.telefone}
             email={listaUnidades[numero]?.email}
-            handleVerPets={() => handleVerPets(listaUnidades[numero])}
+            idUnidade={listaUnidades[numero]?._id}
           />
           <Button texto={'Próximo'} func={nextCard} />
         </div>
         {admin && <Button texto={'Cadastrar'} func={() => setModalAberto(true)} />}
       </StyleMainUnidade>
-
-      <Modal open={showPetsModal} fechaModal={() => setShowPetsModal(false)}>
-        <h2>Pets da Unidade: {selectedUnidade?.nome}</h2>
-        {unidadePets.map((pet) => 
-        (<div key={pet.id}>
-          <p>Nome do Pet: {pet.nome}</p>
-          <p>Espécie: {pet.especie}</p>
-          </div>
-          ))}
-      </Modal>
       <Modal open={modalAberto} fechaModal={() => setModalAberto(false)}>
         <h2>Cadastre uma Unidade</h2>
         <label htmlFor='nome'>Nome:</label>

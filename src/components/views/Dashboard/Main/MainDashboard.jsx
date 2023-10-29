@@ -47,25 +47,24 @@ const MainDashboard = () => {
    
   }
 
-  async function desabilitar(){
-      const idPet = listaPets && listaPets[numero] && listaPets[numero]._id;
-      if (idPet) {
-        const pet = await getPetPorId(idPet);
-        const idUsuario = localStorage.getItem('id')
-        if(pet.usuarios.indexOf(idUsuario) == -1){
-          document.getElementById('botaoAdotar').style.backgroundColor = '#ff5faf'
-        } else {
-          document.getElementById('botaoAdotar').style.backgroundColor = 'gray'
-        }
-      }
-      
-  }
-  
   if(admin == 'true'){
      admin = true
   } else {
     admin = false
   }
+  async function desabilitar(){
+    const idPet = listaPets && listaPets[numero] && listaPets[numero]._id;
+    if (idPet && !admin) {
+      const pet = await getPetPorId(idPet);
+      const idUsuario = localStorage.getItem('id')
+      if(pet.usuarios.indexOf(idUsuario) == -1){
+        document.getElementById('botaoAdotar').style.backgroundColor = '#ff5faf'
+      } else {
+        document.getElementById('botaoAdotar').style.backgroundColor = 'gray'
+      }
+    }
+    
+}
 
   const cadastrar = async () => {
     const admin = await verificarAdmin()
@@ -176,7 +175,7 @@ const MainDashboard = () => {
         <label htmlFor="peso">Peso:</label>
         <Input valor={pesoPet} placeholder={'Peso do pet'} nome={'peso'} tipo={'text'}  func={(e)=>setPesoPet(e.target.value)}/>
         <label htmlFor="descricao">Descricao:</label>
-        <textarea value={descPet} name="descricao" placeholder="Descrição" onChange={(e)=>setDescPet(e.target.value)}></textarea>
+        <textarea rows="2" value={descPet} name="descricao" placeholder="Descrição" onChange={(e)=>setDescPet(e.target.value)}></textarea>
         <select value={unidadeSelecionada} onChange={(evento) => setUnidadeSelecionada(evento.target.value)}>
           {unidades.map((unidade) => {
             return (
