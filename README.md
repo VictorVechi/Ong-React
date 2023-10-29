@@ -13,7 +13,9 @@ Contamos com nossa API própria:
 
 ## Deployment
 
-Link do deploy: https://ong-react-dgjuu0aap-victors-projects-9e701d76.vercel.app
+Link do deploy: https://ong-react-dgjuu0aap-victors-projects-9e701d76.vercel.app 
+
+Atenção: para que o deploy funcione corretamente, é necessário que a API da ONG esteja rodando em sua máquina. Clique no [link da API](https://github.com/VictorVechi/APIong.git) para acessar a documentação e fazer a instalação.
 
 ## Funcionalidades
 
