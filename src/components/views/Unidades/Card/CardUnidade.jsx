@@ -1,18 +1,19 @@
-import React from 'react'
-import { StyleCardUnidade } from './card.styles'
-import { Buildings } from '@phosphor-icons/react'
-import Button from '../../../common/Button/Button'
+// CardUnidade.js
+import React from 'react';
+import { StyleCardUnidade } from './card.styles';
+import { Buildings } from '@phosphor-icons/react';
+import Button from '../../../common/Button/Button';
 
-const CardUnidade = ({nome, email, telefone}) => {
+const CardUnidade = ({ nome, email, telefone, handleVerPets }) => {
   return (
     <StyleCardUnidade>
-        <Buildings size={64} />
-        <h2>{nome}</h2>
-        <p>Email:{email}</p>
-        <p>Contato: {telefone}</p>
-        <Button texto={'Ver pets'} />
+      <Buildings size={64} />
+      <h2>{nome}</h2>
+      <p>Email: {email}</p>
+      <p>Contato: {telefone}</p>
+      <Button texto={'Ver pets'} func={handleVerPets} />
     </StyleCardUnidade>
-  )
-}
+  );
+};
 
-export default CardUnidade
+export default CardUnidade;

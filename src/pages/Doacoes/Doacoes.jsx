@@ -18,15 +18,15 @@ const Doacao = () => {
     logado = true
   }
 
-  const handleDoacaoSubmit = async (event) => {
+  const fazerDoacao = async (event) => {
     event.preventDefault();
-
+  
     const dadosDoacao = {
       cnpjCpf,
-      valorDoacao,
+      valorDoacao
     };
-
     try {
+      console.log("teste", dadosDoacao )
       const resposta = await postDoacao(dadosDoacao);
       console.log('Doação realizada com sucesso:', resposta);
 
@@ -44,7 +44,7 @@ const Doacao = () => {
       {!logado && <Header/>}
       <div className='center'>
         <div className="container"> 
-          <form onSubmit={handleDoacaoSubmit}>
+          <form>
             <h2>Faça uma Doação</h2>
             <div className="input-container">
               <label htmlFor="cnpjCpf">CNPJ/CPF:</label>
@@ -68,7 +68,7 @@ const Doacao = () => {
                 required
               />
             </div>
-            <Button texto="Doar" classe="btn-doar" func={(e) => handleDoacaoSubmit(e)} />
+            <Button texto="Doar" classe="btn-doar" func={(e) => fazerDoacao(e)} />
             <div className='texto'>
               <p>Cuidar dos animais é uma responsabilidade que todos nós compartilhamos. 
                 Quando contribuímos para o bem-estar dos animais, estamos construindo um mundo mais compassivo e solidário. 
