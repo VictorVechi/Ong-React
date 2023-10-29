@@ -19,7 +19,6 @@ export const StyleDoacao = styled.div`
     margin: 10px;
     text-align: center;
     font-size: 18px; 
-
   }
 
   .container {
@@ -50,11 +49,10 @@ export const StyleDoacao = styled.div`
     }
 
     button {
-    background-color: #FF960B8F;
+      background-color: #FA9B27;
     }
 
     .input-container {
-      width: 100%;
       display: flex;
       flex-direction: column;
       gap: 5px;
@@ -63,20 +61,48 @@ export const StyleDoacao = styled.div`
         font-weight: bold;
         color: #333;
       }
-
-      input {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-      }
-    }
-
-    .input-container:nth-child(3) input {
-      width: 40%;
-    }
-    .input-container:nth-child(2) input {
-      width: 60%;
     }
   }
-`;
+
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+
+  .modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+
+    p {
+      font-weight: bold;
+      font-size: 24px;
+      color: #333;
+    }
+
+    button {
+      background-color: #FA9B27;
+      border: solid black 2px;
+      padding: 10px 20px;
+      border-radius: 5px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+  }
+
+  .input-container.invalid {
+    input {
+      border: 2px solid red;
+    }
+  }
+`
