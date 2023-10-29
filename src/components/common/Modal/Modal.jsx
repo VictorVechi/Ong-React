@@ -11,7 +11,6 @@ const Modal = ({ open, title, fechaModal, children }) => {
           <StylesModal id="modal" onClick={handleClose}>
             <StylesContentModal>
               <section className="header">
-                <h2>{title}</h2>
                 <X color={'white'} onClick={fechaModal} cursor="pointer" size={32}/>
               </section>
               {children}
