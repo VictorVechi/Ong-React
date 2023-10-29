@@ -25,6 +25,9 @@ export const StyleQuemSomos = styled.div`
         padding-right: 10vw;
         padding-bottom: 3vw;
     }
+    #icone{
+        padding: 10px;
+    }
 `;
 
 export const CardContainerRow = styled.div`

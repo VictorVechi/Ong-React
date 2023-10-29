@@ -29,23 +29,23 @@ function QuemSomos() {
             <div className='fileira'>
                 <div>
                     <p>Victor Henrique V. da Silva</p>
-                    <a href="https://www.linkedin.com/in/victorhvechi/" target="_blank"><img src="/linkedin_logo.svg" alt="icone linkedin"></img></a>
-                    <a href='https://github.com/VictorVechi' target="_blank"><img src="/github_logo.svg" alt="icone github"></img></a>
+                    <a id="icone" href="https://www.linkedin.com/in/victorhvechi/" target="_blank"><img src="/linkedin_logo.svg" alt="icone linkedin"></img></a>
+                    <a id="icone" href='https://github.com/VictorVechi' target="_blank"><img src="/github_logo.svg" alt="icone github"></img></a>
                 </div>
                 <div>
                     <p>Rafael Fantin Camargo</p>
-                    <a href="https://www.linkedin.com/in/rafaelfantincamargo/" target="_blank"><img src="/linkedin_logo.svg" alt="icone linkedin"></img></a>
-                    <a href='https://github.com/rffantin' target="_blank"><img src="/github_logo.svg" alt="icone github"></img></a>
+                    <a id="icone" href="https://www.linkedin.com/in/rafaelfantincamargo/" target="_blank"><img src="/linkedin_logo.svg" alt="icone linkedin"></img></a>
+                    <a id="icone" href='https://github.com/rffantin' target="_blank"><img src="/github_logo.svg" alt="icone github"></img></a>
                 </div>
                 <div>
                     <p>José Felipe de Proença</p>
-                    <a href="https://www.linkedin.com/in/jos%C3%A9-felipe-de-proen%C3%A7a-5895a6238/" target="_blank"><img src="/linkedin_logo.svg" alt="icone linkedin"></img></a>
-                    <a href='https://github.com/JojoPrc' target="_blank"><img src="/github_logo.svg" alt="icone github"></img></a>
+                    <a id="icone" href="https://www.linkedin.com/in/jos%C3%A9-felipe-de-proen%C3%A7a-5895a6238/" target="_blank"><img src="/linkedin_logo.svg" alt="icone linkedin"></img></a>
+                    <a id="icone" href='https://github.com/JojoPrc' target="_blank"><img src="/github_logo.svg" alt="icone github"></img></a>
                 </div>
                 <div>    
                     <p>Francheska Oliveira Pereira</p>
-                    <a href="https://www.linkedin.com/in/francheska-oliveira-783b40134/" target="_blank"><img src="/linkedin_logo.svg" alt="icone linkedin"></img></a>
-                    <a href='https://github.com/FrancheskaOliveira' target="_blank"><img src="/github_logo.svg" alt="icone github"></img></a>
+                    <a id="icone" href="https://www.linkedin.com/in/francheska-oliveira-783b40134/" target="_blank"><img src="/linkedin_logo.svg" alt="icone linkedin"></img></a>
+                    <a id="icone" href='https://github.com/FrancheskaOliveira' target="_blank"><img src="/github_logo.svg" alt="icone github"></img></a>
                 </div>
             </div>
         </StyleQuemSomos>
