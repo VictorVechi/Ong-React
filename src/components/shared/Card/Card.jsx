@@ -3,7 +3,7 @@ import { StyleCard } from './card.styles'
 import dogFofo from '/dogFofo.svg'
 import Button from '../../common/Button/Button'
 
-const Card = ({nome,raca, idade, peso, func}) => {
+const Card = ({nome,raca, idade, peso, func, botao}) => {
   return (
     <StyleCard>
         <img src={dogFofo} alt="" />
@@ -13,10 +13,11 @@ const Card = ({nome,raca, idade, peso, func}) => {
             <p>Idade: {idade}</p>
             <p>Peso: {peso} Kg</p>
         </div>
-        <Button 
+        {botao && 
+            <Button 
             texto={"Adotar"}
             func={func}
-        />
+        />}
     </StyleCard>
   )
 }

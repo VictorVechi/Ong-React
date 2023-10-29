@@ -17,7 +17,7 @@ export const StylesModal = styled.div`
 export const StylesContentModal = styled.div`
   display: flex;
   width: 500px;
-  height: 75%;
+  height: 100%;
   padding: 10px;
   flex-direction: column;
   justify-content: center;
@@ -40,6 +40,7 @@ export const StylesContentModal = styled.div`
 
     button {
         background-color: ${(props)=>props.theme.orangeDark};
+        font-size: 18px;
     }
   
     .header {
