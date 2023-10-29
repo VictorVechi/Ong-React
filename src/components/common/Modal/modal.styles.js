@@ -40,6 +40,7 @@ export const StylesContentModal = styled.div`
 
     button {
         background-color: ${(props)=>props.theme.orangeDark};
+        font-size: 18px;
     }
   
     .header {
